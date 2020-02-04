@@ -25,6 +25,7 @@ public class Login_01_RegisterAndLogin {
 	  driver.get("https://demo.nopcommerce.com/");
 	  email = "corona" + randomNumber() + "@gmail.com";
 	  password = "coronavirus";
+	  
    }
 
   @Test
