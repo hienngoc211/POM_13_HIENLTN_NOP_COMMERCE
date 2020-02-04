@@ -23,6 +23,7 @@ public class Login_01_RegisterAndLogin {
 	  driver = new FirefoxDriver();
 	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	  driver.get("https://demo.nopcommerce.com/");
+	  //Generate random email
 	  email = "corona" + randomNumber() + "@gmail.com";
 	  password = "coronavirus";
 	  
