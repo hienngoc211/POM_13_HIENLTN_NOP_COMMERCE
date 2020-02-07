@@ -9,6 +9,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="librabries/selenium-server-standalone-2.53.1.jar"/>
+	<classpathentry kind="lib" path="librabries/selenium-server-standalone-3.141.59.jar"/>
+	<classpathentry kind="lib" path="librabries/testng-6.9.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
