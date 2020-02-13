@@ -11,16 +11,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
+	
 	//Biến toàn cục (trong phạm vi class)
 	public WebDriver driver;
-	long longTimeOut = 30;
-	Actions action;
-	WebElement element;
-	By byXpath;
-	WebDriverWait waitExplicit;
+	private long longTimeOut = 30;
+	private Actions action;
+	private WebElement element;
+	private By byXpath;
+	private WebDriverWait waitExplicit;
 	// Mở ra Url truyền tham số từ bên ngoài
 	// driver.get(https://facebook.com")
 	public void openURL(String urlValue) {
+		
 		driver.get(urlValue);
 		driver.manage().timeouts().implicitlyWait(longTimeOut, TimeUnit.SECONDS);
 		driver.manage().window().maximize();

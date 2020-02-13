@@ -20,11 +20,25 @@ public class Login_01_RegisterAndLogin {
 	
   @BeforeTest
    public void beforeTest() {
-	  System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
-	  driver = new FirefoxDriver();
+	  
+	  String osName = System.getProperty("os.name");
+	  
+		if (osName.toLowerCase().contains("windows")) {
+			System.setProperty("webdriver.gecko.driver", ".//BrowserDrivers/geckodriver.exe");
+			
+		} else if(osName.toLowerCase().contains("mac")){
+			System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
+		} else {
+			System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodrive_linux");
+
+		}
+		
+		driver = new FirefoxDriver();
 	  
 	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	  driver.get("https://demo.nopcommerce.com/");
+	  
+	  
 	  //Generate random email
 	  email = "corona" + randomNumber() + "@gmail.com";
 	  password = "coronavirus";

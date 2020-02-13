@@ -11,5 +11,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="librabries/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="librabries/testng-6.9.10.jar"/>
+	<classpathentry kind="lib" path="BrowserDrivers/geckodriver.exe"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
