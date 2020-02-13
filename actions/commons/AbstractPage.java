@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class AbstractPage {
 	
 	//Biến toàn cục (trong phạm vi class)
-	public WebDriver driver;
+	private WebDriver driver;
 	private long longTimeOut = 30;
 	private Actions action;
 	private WebElement element;
