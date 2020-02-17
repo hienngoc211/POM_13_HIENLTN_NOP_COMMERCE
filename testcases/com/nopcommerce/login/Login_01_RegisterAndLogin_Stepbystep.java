@@ -12,24 +12,18 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import commons.AbstractPage;
-
-public class Login_02_RegisterAndLogin_AbstractPage {
+public class Login_01_RegisterAndLogin_Stepbystep {
 	
 	private WebDriver driver;
 	private Select select;
 	private String email, password;
 	
-	// Declare an instance of Abstract Page
-	private AbstractPage abstractPage;
-	
   @BeforeTest
-  
    public void beforeTest() {
 	  
 	  String osName = System.getProperty("os.name");
 	  
-	  if (osName.toLowerCase().contains("windows")) {
+		if (osName.toLowerCase().contains("windows")) {
 			System.setProperty("webdriver.gecko.driver", ".//BrowserDrivers/geckodriver.exe");
 			
 		} else if(osName.toLowerCase().contains("mac")){
@@ -38,18 +32,11 @@ public class Login_02_RegisterAndLogin_AbstractPage {
 			System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodrive_linux");
 
 		}
+		
+		driver = new FirefoxDriver();
 	  
-	  System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
-	  driver = new FirefoxDriver(); 
-
-	  
-	  //Init Abstract Page 
-	  
-	  abstractPage = new AbstractPage();	  
-	  
-	  abstractPage.openURL("https://demo.nopcommerce.com/");
-	  
-	  
+	  driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	  driver.get("https://demo.nopcommerce.com/");
 	  
 	  
 	  //Generate random email
@@ -61,9 +48,7 @@ public class Login_02_RegisterAndLogin_AbstractPage {
   @Test
   public void TC_01_RegisterToSystem() {
 	  //Click to Register link
-	  abstractPage.clickToElement("//a[@class='ico-register']");
-	  //driver.findElement(By.cssSelector(".ico-register")).click();
-	  
+	  driver.findElement(By.cssSelector(".ico-register")).click();
 	  //Click male radio button
 	  driver.findElement(By.cssSelector("#gender-female")).click();
 	  driver.findElement(By.cssSelector("#FirstName")).sendKeys("Corona");

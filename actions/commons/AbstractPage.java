@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
@@ -19,8 +20,14 @@ public class AbstractPage {
 	private WebElement element;
 	private By byXpath;
 	private WebDriverWait waitExplicit;
-	// Mở ra Url truyền tham số từ bên ngoài
-	// driver.get(https://facebook.com")
+	private Select select;	
+
+	public AbstractPage(WebDriver localDriver) {
+		System.out.println("Driver at testcase = " + localDriver);
+		driver = localDriver;
+		System.out.println("Driver at abstract = " + driver);
+	}
+	
 	public void openURL(String urlValue) {
 		
 		driver.get(urlValue);
@@ -76,9 +83,19 @@ public class AbstractPage {
 	public void sendKeyToElement(String locator, String value) {
 		driver.findElement(By.xpath(locator)).sendKeys(value);
 	}
+	
+	public void selectItemtoDropdown(String locator, String valueItem) {
+		element = findElementByXpath(locator);
+		select = new Select(element);
+		select.selectByVisibleText(valueItem);
+	}
 		
 	public int countElementNumber(String locator) {
 		return findElementsByXpath(locator).size();
+	}
+	
+	public String getTextElement(String locator) {
+		return findElementByXpath(locator).getText();
 	}
 	
 	public String getAttributeElement(String locator, String attributeName) {
