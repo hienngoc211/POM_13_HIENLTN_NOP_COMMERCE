@@ -1,8 +1,10 @@
 package pageObjects;
 
-public class LoginPage {
+public class LoginPageObject {
 	
 	public void inputToEmailTextbox() {
+		// wait visible
+		// sendKey
 		
 	}
 	
