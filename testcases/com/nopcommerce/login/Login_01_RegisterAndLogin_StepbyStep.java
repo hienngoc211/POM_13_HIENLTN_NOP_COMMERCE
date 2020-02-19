@@ -18,7 +18,7 @@ public class Login_01_RegisterAndLogin_StepbyStep {
 	
 	private WebDriver driver;
 	private Select select;
-	private String email, password; 
+	private String email, password;
 	
 	@BeforeTest
 	  public void beforeTest() {
