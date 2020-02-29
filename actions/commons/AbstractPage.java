@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPage {
@@ -16,13 +17,20 @@ public class AbstractPage {
 	// Bao gồm những function được wrapper lại từ Selenium lib 
 	
 	// Biến toàn cục - trong phạm vi class 
-	public WebDriver driver;
-	long longTimeOut = 30;
-	By byXpath;
-	Actions action;
-	WebElement element;
-	WebDriverWait waitExplicit;
+	private WebDriver driver;
+	private long longTimeOut = 30;
+	private By byXpath;
+	private Actions action;
+	private WebElement element;
+	private WebDriverWait waitExplicit;
+	private Select select;
 	
+	public AbstractPage(WebDriver localDriver){
+		System.out.println("Driver at testcase = " + localDriver);
+		driver = localDriver;
+		System.out.println("Driver at abstract = " + driver);
+	}
+		
 	// Mở ra 1 url truyền tham số từ bên 
 	// driver.get("");
 	public void openUrl(String urlValue){
@@ -83,6 +91,17 @@ public class AbstractPage {
 	public By byXpathLocator(String locator) {
 		return  By.xpath(locator);
 	}
+	
+	public void selectItemInDropdown(String locator, String value) {
+		element = findElementByXpath(locator);
+		select = new Select(element);
+		select.selectByVisibleText(value);
+	}
+	
+	public String getTextElement (String locator) {
+		return findElementByXpath(locator).getText();
+	}
+	
 	
 	public int countElementNumber(String locator) {
 		return findElementsByXpath(locator).size();

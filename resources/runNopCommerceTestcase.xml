@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="Suite">
+<suite name="Suite" parallel="false">
   <test name="Test">
     <classes>
-      <class name="com.nopcommerce.login.Login_01_RegisterAndLogin_StepbyStep"/>
+  <!-- <class name="com.nopcommerce.login.Login_01_RegisterAndLogin_StepbyStep"/> -->    
+    <!-- <class name="com.nopcommerce.login.Login_02_RegisterAndLogin_AbstractPage"/> -->        
+     <!-- <class name="com.nopcommerce.login.Login_03_RegisterAndLogin_AbstractPage_Extends"/>     -->   
+          <!--  <class name="com.nopcommerce.login.Login_z02_RegisterAndLogin_AbstractPage_Extends_Constructor"/>--> 
+      <class name="com.nopcommerce.login.Login_03_RegisterAndLogin_AbstractPage_Object"/>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -2,7 +2,8 @@ package pageUIs;
 
 public class LoginPageUI {
 
-	public String EMAIL_TEXTBOX = "//*[@id='email']";
-	public String PASSWORD_TEXTBOX = "//*[@id='pass']";
+	public static final String EMAIL_TEXTBOX = "//input[@id='Email']";
+	public static final String PASSWORD_TEXTBOX = "//input[@id='Password']";
+	public static final String LOGIN_BUTTON = "//input[@class='button-1 login-button']";
 
 }

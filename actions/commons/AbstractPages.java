@@ -13,18 +13,22 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractPages {
 	
-	//Biến toàn cục (trong phạm vi class)
+	// Function dùng chung dành riêng cho package (layer) pageObject 
+	// Bao gồm những function được wrapper lại từ Selenium lib 
+	
+	// Biến toàn cục - trong phạm vi class 
 	private long longTimeOut = 30;
+	private By byXpath;
 	private Actions action;
 	private WebElement element;
-	private By byXpath;
 	private WebDriverWait waitExplicit;
-	private Select select;	
-
+	public Select select;
 	
 	
-	public void openURL(WebDriver driver,String urlValue) {
 		
+	// Mở ra 1 url truyền tham số từ bên 
+	// driver.get("");
+	public void openUrl(WebDriver driver, String urlValue){
 		driver.get(urlValue);
 		driver.manage().timeouts().implicitlyWait(longTimeOut, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -39,7 +43,7 @@ public class AbstractPages {
 	}
 	
 	public void back(WebDriver driver) {
-		driver.navigate().back();;
+		driver.navigate().back();
 	}
 	
 	public void refreshPage(WebDriver driver) {
@@ -54,70 +58,91 @@ public class AbstractPages {
 		driver.switchTo().alert().dismiss();
 	}
 	
-	public  String getTextAlert(WebDriver driver) {
+	public String getTextAlert(WebDriver driver) {
 		return driver.switchTo().alert().getText();
-
-	}
-	public void sendKeyToAlert(WebDriver driver,String value) {
-		
-	}
-	public WebElement findElementByXpath(WebDriver driver,String locator) {
-		return driver.findElement(byXpathLocator(driver,locator));
 	}
 	
+	public void sendKeyToAlert(WebDriver driver,String value) {
+		driver.switchTo().alert().sendKeys(value);
+	}
+	
+	
+	public WebElement findElementByXpath(WebDriver driver,String locator) {
+		return driver.findElement(byXpathLocator(driver, locator));
+	}
+	
+	public void clickToElement(WebDriver driver,String locator) {
+		findElementByXpath(driver, locator).click();
+	}
+	
+	public void sendKeyToElement(WebDriver driver,String locator, String value) {
+		findElementByXpath(driver, locator).clear();
+		findElementByXpath(driver, locator).sendKeys(value);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	 }
+	
 	public List<WebElement> findElementsByXpath(WebDriver driver,String locator) {
-		return driver.findElements(byXpathLocator(driver,locator));
+		return driver.findElements(byXpathLocator(driver, locator));
 	}
 	
 	public By byXpathLocator(WebDriver driver,String locator) {
-		return By.xpath(locator);
-	}
-	public void clickToElement(WebDriver driver,String locator) {
-		driver.findElement(By.xpath(locator)).click();
-	}
-	public void sendKeyToElement(WebDriver driver,String locator, String value) {
-		driver.findElement(By.xpath(locator)).sendKeys(value);
+		return  By.xpath(locator);
 	}
 	
-	public void selectItemtoDropdown(WebDriver driver,String locator, String valueItem) {
+	public void selectItemInDropdown(WebDriver driver, String locator, String value) {
 		element = findElementByXpath(driver, locator);
 		select = new Select(element);
-		select.selectByVisibleText(valueItem);
+		select.selectByVisibleText(value);
 	}
-		
+	
+	public String getTextElement (WebDriver driver,String locator) {
+		return findElementByXpath(driver, locator).getText();
+	}
+	
+	
 	public int countElementNumber(WebDriver driver,String locator) {
 		return findElementsByXpath(driver, locator).size();
 	}
 	
-	public String getTextElement(WebDriver driver,String locator) {
-		return findElementByXpath(driver, locator).getText();
+	public String getAttribuiteElement(WebDriver driver,String locator, String AttribuiteName) {
+		return findElementByXpath(driver, locator).getAttribute(AttribuiteName);
 	}
 	
-	public String getAttributeElement(WebDriver driver,String locator, String attributeName) {
-		return findElementByXpath(driver, locator).getAttribute(attributeName);
-	}
 	public boolean isElementDisplayed(WebDriver driver,String locator) {
 		return findElementByXpath(driver, locator).isDisplayed();
 	}
 	
 	public void hoverMouseToElement(WebDriver driver,String locator) {
+		// Biến cục bộ - Phạm vi method/hàm
 		action = new Actions(driver);
 		element = findElementByXpath(driver, locator);
 		action.moveToElement(element).perform();
 	}
-	public void doubleClickToElement (WebDriver driver,String locator) {
+	
+	public void doubleClickToElement(WebDriver driver,String locator) {
 		action = new Actions(driver);
 		element = findElementByXpath(driver, locator);
 	}
 	
 	public void waitToElementDisplayed(WebDriver driver,String locator) {
 		byXpath = byXpathLocator(driver, locator);
-		waitExplicit = new WebDriverWait(driver,longTimeOut);
-		waitExplicit.until(ExpectedConditions.visibilityOfElementLocated(byXpath));
+		waitExplicit = new WebDriverWait(driver, longTimeOut);
+		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byXpath));		
 	}
+	
 	public void waitToElementClickable(WebDriver driver,String locator) {
 		byXpath = byXpathLocator(driver, locator);
-		waitExplicit = new WebDriverWait(driver,longTimeOut);
-		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));
+		waitExplicit = new WebDriverWait(driver, longTimeOut);
+		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));		
+	}
+	
+	public void waitToPresenceOfElement(WebDriver driver,String locator) {
+		byXpath = byXpathLocator(driver, locator);
+		waitExplicit = new WebDriverWait(driver, longTimeOut);
+		waitExplicit.until(ExpectedConditions.presenceOfElementLocated(byXpath));		
 	}
 }

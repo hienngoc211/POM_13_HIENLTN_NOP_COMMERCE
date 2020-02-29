@@ -1,18 +1,16 @@
 package com.nopcommerce.login;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
-
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class Login_01_RegisterAndLogin_StepbyStep {
 	
@@ -22,7 +20,9 @@ public class Login_01_RegisterAndLogin_StepbyStep {
 	
 	@BeforeTest
 	  public void beforeTest() {
+		
 		System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
+			
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.get("https://demo.nopcommerce.com/");
