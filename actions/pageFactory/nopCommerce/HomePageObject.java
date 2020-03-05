@@ -1,15 +1,15 @@
-package pageObjects;
+package pageFactory.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPages;
-import pageUIs.HomePageUI;
+import pageUIs.nopCommerce.HomePageUI;
 
-public class HomePageObject extends AbstractPages {
+public class HomePageObject extends AbstractPagesFactory {
 		WebDriver driver;
 		
-	public HomePageObject(WebDriver _driver) {
-		driver = _driver;
+	public HomePageObject(WebDriver driver) {
+		this.driver = driver;
 		
 	}
 	public RegisterPageObject clickToRegisterLink() {
@@ -29,18 +29,7 @@ public class HomePageObject extends AbstractPages {
 		return isElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
    
 	}
-	public ComputerPageObject clickComputerMenu() {
-		waitToElementClickable(driver, HomePageUI.COMPUTER_MENU);
-		clickToElement(driver, HomePageUI.COMPUTER_MENU);
-		return new ComputerPageObject(driver);
-	}
-	public DesktopPageObject clickDesktopMenu() {
-		waitToElementClickable(driver, HomePageUI.COMPUTER_MENU);
-		hoverMouseToElement(driver, HomePageUI.COMPUTER_MENU);
-		clickToElement(driver, HomePageUI.DESKTOP_MENU);
-		return new DesktopPageObject(driver);
-	}
-	
+
 	
 	
 }

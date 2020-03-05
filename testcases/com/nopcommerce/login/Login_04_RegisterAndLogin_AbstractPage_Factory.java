@@ -14,7 +14,7 @@ import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
 import pageObjects.nopCommerce.RegisterPageObject;
 
-public class Login_03_RegisterAndLogin_AbstractPage_Object {		
+public class Login_04_RegisterAndLogin_AbstractPage_Factory extends AbstractPages {		
 
 	private WebDriver driver;
 	private String email, password, registerSuccessMsg;
@@ -43,7 +43,7 @@ public class Login_03_RegisterAndLogin_AbstractPage_Object {
 		System.out.println("Driver at testcase = " + driver.toString());;
 		
 			
-		driver.get("https://demo.nopcommerce.com/");
+		openUrl(driver, "https://demo.nopcommerce.com/");
 		
 		// --> Home Page 
 		homePage = new HomePageObject(driver);
