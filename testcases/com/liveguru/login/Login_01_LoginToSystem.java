@@ -36,7 +36,8 @@ public class Login_01_LoginToSystem {
 					System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver_linux");
 				}
 	
-		driver = new FirefoxDriver();				
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
 		driver.get("http://live.demoguru99.com/index.php");	
 		
 		homePage = new HomePageObject(driver);
@@ -50,51 +51,54 @@ public class Login_01_LoginToSystem {
 	  
 	  loginPage.clickToLoginButton();
 	  
-	  Assert.assertTrue(loginPage.isEmptyEmailErrorMessageDisplayed());
-	  Assert.assertTrue(loginPage.isEmptyPasswordErrorMessageDisplayed());
+	  Assert.assertTrue(loginPage.isEmptyEmailErrorMessageDisplayed("This is a required field."));
+	  Assert.assertTrue(loginPage.isEmptyPasswordErrorMessageDisplayed("This is a required field."));
 	  	  
   }
-  public void TC_02_LoginWithInvalidEmail() {
+  @Test
+  public void TC_02_LoginInvalidEmail() {
 	  
 	  loginPage.inputToEmailTextbox("123@123.123123");
 	  loginPage.inputToPasswordTextbox("");
 	  
 	  loginPage.clickToLoginButton();
-	  Assert.assertTrue(loginPage.isInvalidEmailErrorMessageDisplayed());
-	  Assert.assertTrue(loginPage.isInvalidPasswordErrorMessageDisplayed());	  
+	  Assert.assertTrue(loginPage.isInvalidEmailErrorMessageDisplayed("Please enter a valid email address. For example johndoe@domain.com."));
 
   }
+  @Test
   public void TC_03_LoginEmailNotExist() {
 	  loginPage.inputToEmailTextbox("automationfc" + randomNumber() + "@gmail.com");
-	  loginPage.inputToPasswordTextbox("");
-	  
+	  loginPage.inputToPasswordTextbox("123123123");
+	
 	  loginPage.clickToLoginButton();
-	  Assert.assertTrue(loginPage.isEmailNotExistEmailErrorMessageDisplayed());
+	  Assert.assertTrue(loginPage.isEmailNotExistOrInvalidPasswordErrorMessageDisplayed("Invalid login or password."));
+	  
   }
+  @Test
   public void TC_04_LoginWithPasswordLessThan6Chars() {
 	  loginPage.inputToEmailTextbox("automationfc" + randomNumber() + "@gmail.com");
 	  loginPage.inputToPasswordTextbox("123");
 	  
 	  loginPage.clickToLoginButton();
-	  Assert.assertTrue(loginPage.isInvalidPasswordErrorMessageDisplayed());
+	  Assert.assertTrue(loginPage.isPasswordLessThan6CharsErrorMessage("Please enter 6 or more characters without leading or trailing spaces."));
   }
+  @Test
   public void TC_05_LoginWithIncorrectPassword() {
 	  loginPage.inputToEmailTextbox("automationfc.vn@gmail.com");
 	  loginPage.inputToPasswordTextbox("123456789");
 	  
 	  loginPage.clickToLoginButton();
-	  Assert.assertTrue(loginPage.isIncorrectPasswordErrorMessageDisplayed());
+	  Assert.assertTrue(loginPage.isEmailNotExistOrInvalidPasswordErrorMessageDisplayed("Invalid login or password."));
   }
-  
- 
+  @Test
   public void TC_06_LoginWithValidEmailAndPassword() {
 	  loginPage.inputToEmailTextbox("automationfc.vn@gmail.com");
 	  loginPage.inputToPasswordTextbox("123123");
 	  
 	  myDashboardPage = loginPage.clickToLoginButton();
-	  Assert.assertTrue(myDashboardPage.isFullnameDisplayed());
-	  Assert.assertTrue(myDashboardPage.isEmailDisplayed());
-
+	  Assert.assertTrue(myDashboardPage.isFullnameOrEmailTextDisplayed("Automation FC"));
+	  Assert.assertTrue(myDashboardPage.isFullnameOrEmailTextDisplayed("automationfc.vn@gmail.com"));
+	  
 
   }
   
