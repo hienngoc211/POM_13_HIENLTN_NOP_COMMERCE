@@ -3,7 +3,6 @@ package pageObjects.liveGuru;
 import org.openqa.selenium.WebDriver;
 
 import commons.AbstractPages;
-import pageUIs.liveGuru.LoginPageUI;
 import pageUIs.liveGuru.MyDashboardPageUI;
 
 public class MyDashboardPageObject extends AbstractPages{
@@ -15,8 +14,8 @@ public class MyDashboardPageObject extends AbstractPages{
 
 
 	public boolean isFullnameOrEmailTextDisplayed(String errorMessage) {
-		waitToElementDisplayed(driver, String.format(MyDashboardPageUI.EMAIL_PASSWORD_TEXT, errorMessage));	
-		return isElementDisplayed(driver, String.format(MyDashboardPageUI.EMAIL_PASSWORD_TEXT, errorMessage));
+		waitToElementDisplayed(driver, String.format(MyDashboardPageUI.LOGIN_SUCCESSFULL_MESSAGE, errorMessage));	
+		return isElementDisplayed(driver, String.format(MyDashboardPageUI.LOGIN_SUCCESSFULL_MESSAGE, errorMessage));
 	}
 
 }
