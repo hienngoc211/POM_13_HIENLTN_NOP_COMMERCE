@@ -1,15 +1,24 @@
 package pageObjects.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import commons.AbstractPages;
+import commons.PageGeneratorManager;
 import pageUIs.nopCommerce.LoginPageUI;
 
 public class LoginPageObject extends AbstractPages{
 	private WebDriver driver;
+	private WebDriverWait waitExplicit;
 	
 	public LoginPageObject(WebDriver localDriver) {
 		driver = localDriver;
+
+	}
+	
+	public LoginPageObject(WebDriver localDriver, WebDriverWait waitExplicit) {
+		driver = localDriver;
+		this.waitExplicit = waitExplicit;
 
 	}
 	public void inputToEmailTextbox(String email) {
@@ -25,7 +34,7 @@ public class LoginPageObject extends AbstractPages{
 	public HomePageObject clickToLoginButton() {
 		waitToElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
 		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
-		return new HomePageObject(driver) ;
+		return PageGeneratorManager.getHomePage(driver) ;
 	}
 	
 	

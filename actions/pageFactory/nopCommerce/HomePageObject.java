@@ -1,35 +1,55 @@
 package pageFactory.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
-import commons.AbstractPages;
-import pageUIs.nopCommerce.HomePageUI;
 
-public class HomePageObject extends AbstractPages {
+public class HomePageObject extends AbstractPagesFactory {
 		WebDriver driver;
 		
 	public HomePageObject(WebDriver driver) {
+		// Gán 
 		this.driver = driver;
 		
+		// Khởi tạo element và lưu vào cache
+		PageFactory.initElements(driver, this);
 	}
+		
+	@FindBy(how = How.XPATH, using = "//a[@class='ico-register']")
+	private WebElement registerLink;
+	
+	@FindBy(how = How.XPATH, using = "//a[@class='ico-login']")
+	private WebElement loginLink;
+	
+	@FindBy(how = How.XPATH, using = "//a[@class='ico-account']")
+	private WebElement myAccountLink;
+	
 	public RegisterPageObject clickToRegisterLink() {
-		waitToElementClickable(driver, HomePageUI.REGISTER_LINK);
-		clickToElement(driver, HomePageUI.REGISTER_LINK);
+		waitToElementClickable(driver, registerLink);
+		clickToElement(driver, registerLink);
+		// Khởi tạo page 
 		return new RegisterPageObject(driver);
+		
 	}
-
-	public LoginPageObject clickToLoginLink() {
-		waitToElementClickable(driver, HomePageUI.LOGIN_LINK);
-		clickToElement(driver, HomePageUI.LOGIN_LINK);
+	
+	public LoginPageObject clicktoMyLoginLink() {
+		waitToElementClickable(driver, loginLink);
+		clickToElement(driver, loginLink);
 		return new LoginPageObject(driver);
 	}
-
+	
 	public boolean isMyAccountLinkDisplayed() {
-		waitToElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
-		return isElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
-   
+		waitToElementDisplayed(driver, myAccountLink);
+		return isElementDisplayed(driver,myAccountLink);
+		
 	}
+
+	
 
 	
 	
 }
+

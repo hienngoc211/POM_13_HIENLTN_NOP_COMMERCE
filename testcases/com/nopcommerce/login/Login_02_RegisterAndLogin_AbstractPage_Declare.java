@@ -4,7 +4,6 @@ import java.util.Random;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -20,7 +19,6 @@ public class Login_02_RegisterAndLogin_AbstractPage_Declare {
 	
 	// Declare an instance Abstract Page
 	private AbstractPage abstractPage;
-	private WebDriverWait wait;
 	
 	@BeforeTest
 	  public void beforeTest() {

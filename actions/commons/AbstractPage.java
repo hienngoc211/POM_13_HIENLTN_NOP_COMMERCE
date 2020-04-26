@@ -18,7 +18,6 @@ public class AbstractPage {
 	
 	// Biến toàn cục - trong phạm vi class 
 	private WebDriver driver;
-	private long longTimeOut = 30;
 	private By byXpath;
 	private Actions action;
 	private WebElement element;
@@ -35,7 +34,7 @@ public class AbstractPage {
 	// driver.get("");
 	public void openUrl(String urlValue){
 		driver.get(urlValue);
-		driver.manage().timeouts().implicitlyWait(longTimeOut, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
 	
@@ -129,13 +128,13 @@ public class AbstractPage {
 	
 	public void waitToElementDisplayed(String locator) {
 		byXpath = byXpathLocator(locator);
-		waitExplicit = new WebDriverWait(driver, longTimeOut);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(byXpath));		
 	}
 	
 	public void waitToElementClickable(String locator) {
 		byXpath = byXpathLocator(locator);
-		waitExplicit = new WebDriverWait(driver, longTimeOut);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(byXpath));		
 	}
 }

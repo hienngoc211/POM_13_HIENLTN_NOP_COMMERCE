@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Suite" parallel="false">
-  <test name="Test">
+<suite name="Nop Commerce" parallel="tests" thread-count="2">
+	
+
+<!-- </test><test name="Run on CHROME ">
+  <parameter name="browser" value="chrome"></parameter>
+  
     <classes>
-  <!-- <class name="com.nopcommerce.login.Login_01_RegisterAndLogin_StepbyStep"/> -->    
-    <!-- <class name="com.nopcommerce.login.Login_02_RegisterAndLogin_AbstractPage"/> -->        
-     <!-- <class name="com.nopcommerce.login.Login_03_RegisterAndLogin_AbstractPage_Extends"/>     -->   
-          <!--  <class name="com.nopcommerce.login.Login_z02_RegisterAndLogin_AbstractPage_Extends_Constructor"/>--> 
-      <class name="com.liveguru.login.Login_01_LoginToSystem"/>
+  
+      <class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern"/>
       
     </classes>
-  </test> <!-- Test -->
-</suite> <!-- Suite -->
+ </test>  -->
+  
+<test name="Run on FIREFOX ">
+  	<parameter name ="browser" value="firefox"> </parameter>
+  	<parameter name ="ip" value ="192.168.1.1"> </parameter>
+  
+    <classes>
+    
+      <class name="com.nopcommerce.login.Login_08_RegisterAndLogin_Action_Chain"/>
+      
+    </classes>
+</test> 
+<!-- </test> <test name="Run on CHROME_HEADLESS "> 
+	<parameter name="browser" value="headless_chrome"></parameter> 
+	<classes>
+
+ 		<class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern" /> 
+
+	</classes> 
+ </test>   
+ -->
+<!-- 	<test name="Run on FIREFOX_HEADLESS "> -->
+<!-- 		<parameter name="browser" value="headless_firefox"></parameter> -->
+<!-- 		<classes> -->
+
+<!-- 			<class name="com.nopcommerce.login.Login_06_RegisterAndLogin_Multi_Browser_Brallel" /> -->
+
+<!-- 		</classes> -->
+<!-- 	</test>  -->
+  
+
+</suite>

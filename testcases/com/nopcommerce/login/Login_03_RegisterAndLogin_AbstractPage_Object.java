@@ -9,7 +9,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import commons.AbstractPages;
 import pageObjects.nopCommerce.HomePageObject;
 import pageObjects.nopCommerce.LoginPageObject;
 import pageObjects.nopCommerce.RegisterPageObject;
@@ -40,9 +39,11 @@ public class Login_03_RegisterAndLogin_AbstractPage_Object {
 	
 		driver = new FirefoxDriver();
 		
+		
+		
 		System.out.println("Driver at testcase = " + driver.toString());;
 		
-			
+		//ID	
 		driver.get("https://demo.nopcommerce.com/");
 		
 		// --> Home Page 

@@ -1,83 +1,126 @@
 package pageFactory.nopCommerce;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import commons.AbstractPages;
-import pageUIs.nopCommerce.RegisterPageUI;
 
-public class RegisterPageObject extends AbstractPages{
+
+
+public class RegisterPageObject extends AbstractPagesFactory{
 	private WebDriver driver;
 	
 	public RegisterPageObject(WebDriver localDriver) {
 		driver = localDriver;
+		PageFactory.initElements(driver, this);
 
 	}
+	
+	@FindBy(xpath = "//input[@id='gender-female']")
+	private WebElement genderfemailRadio;
+	
+	@FindBy(xpath = "//input[@id='FirstName']")
+	private WebElement firstNameTextbox;
+	
+	@FindBy(id = "LastName")
+	private WebElement lastNameTextbox;
+	
+	@FindBy(name = "DateOfBirthDay")
+	private WebElement dateOfBirth;
+	
+	@FindBy(name = "DateOfBirthMonth")
+	private WebElement dateOfMonth;
+	
+	@FindBy(name = "DateOfBirthYear")
+	private WebElement dateOfYear ;
+	
+	@FindBy(id = "Email")
+	private WebElement emailTextbox;
+	
+	@FindBy(id = "Company")
+	private WebElement companyTextbox;
+	
+	@FindBy(id = "Password")
+	private WebElement passwordTextbox;
+	
+	@FindBy(xpath = "//input[@id='ConfirmPassword']")
+	private WebElement confirmPasswordTextbox;
+	
+	@FindBy(id = "register-button")
+	private WebElement registerButton;
+	
+	@FindBy(xpath = "//div[@class='result']")
+	private WebElement registerSuccessText;
+	
+	@FindBy(xpath = "//a[@class='ico-logout']")
+	private WebElement logoutLink;
 
 	public void clickToFemailRadio() {
-		waitToElementClickable(driver, RegisterPageUI.GENDER_FEMAIL_RADIO);
-		clickToElement(driver, RegisterPageUI.GENDER_FEMAIL_RADIO);
+		waitToElementClickable(driver, genderfemailRadio);
+		clickToElement(driver, genderfemailRadio);
 	}
 
 	public void inputToFirstName(String firstNameValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.FIRST_NAME_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.FIRST_NAME_TEXTBOX, firstNameValue);
+		waitToElementDisplayed(driver, firstNameTextbox);
+		sendKeyToElement(driver, firstNameTextbox, firstNameValue);
 		
 	}
 
 	public void inputToLastName(String lastNameValue) {
-		waitToElementDisplayed(driver, RegisterPageUI.LAST_NAME_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.LAST_NAME_TEXTBOX, lastNameValue);
+		waitToElementDisplayed(driver, lastNameTextbox);
+		sendKeyToElement(driver, lastNameTextbox, lastNameValue);
 	}
 
 	public void selectDay(String expectedItem) {
-		waitToElementClickable(driver, RegisterPageUI.DAY_DROPDOWN);
-		selectItemInDropdown(driver, RegisterPageUI.DAY_DROPDOWN, expectedItem);;
+		waitToElementClickable(driver, dateOfBirth);
+		selectItemInDropdown(driver, dateOfBirth, expectedItem);;
 	}
 
 	public void selectMonth(String expectedItem) {
-		waitToElementClickable(driver, RegisterPageUI.MONTH_DROPDOWN);
-		selectItemInDropdown(driver, RegisterPageUI.MONTH_DROPDOWN, expectedItem);
+		waitToElementClickable(driver, dateOfMonth);
+		selectItemInDropdown(driver, dateOfMonth, expectedItem);
 	}
 
 	public void selectYear(String expectedItem) {
-		waitToElementClickable(driver, RegisterPageUI.YEAR_DROPDOWN);
-		selectItemInDropdown(driver, RegisterPageUI.YEAR_DROPDOWN, expectedItem);
+		waitToElementClickable(driver, dateOfYear);
+		selectItemInDropdown(driver, dateOfYear, expectedItem);
 	}
 
 	public void inputToEmailTextbox(String email) {
-		waitToElementDisplayed(driver, RegisterPageUI.EMAIL_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.EMAIL_TEXTBOX, email);
+		waitToElementDisplayed(driver, emailTextbox);
+		sendKeyToElement(driver, emailTextbox, email);
 	}
 
 	public void inputToCompanyTextbox(String company) {
-		waitToElementDisplayed(driver, RegisterPageUI.COMPANY_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.COMPANY_TEXTBOX, company);
+		waitToElementDisplayed(driver, companyTextbox);
+		sendKeyToElement(driver, companyTextbox, company);
 	}
 
 	public void inputToPasswordTextbox(String password) {
-		waitToElementDisplayed(driver, RegisterPageUI.PASSWORD_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.PASSWORD_TEXTBOX, password);
+		waitToElementDisplayed(driver, passwordTextbox);
+		sendKeyToElement(driver, passwordTextbox, password);
 	}
 
 	public void sendkeyToConfirmPasswordTextbox(String confirmPassword) {
-		waitToElementDisplayed(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX);
-		sendKeyToElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, confirmPassword);
+		waitToElementDisplayed(driver, confirmPasswordTextbox);
+		sendKeyToElement(driver, confirmPasswordTextbox, confirmPassword);
 	}
 
 	public void clickToRegisterButton() {
-		waitToElementClickable(driver, RegisterPageUI.REGISTER_BUTTON);
-		clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
+		waitToElementClickable(driver, registerButton);
+		clickToElement(driver, registerButton);
 	}
 
 	public String getRegisterSuccessMessage() {
-		waitToElementDisplayed(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
-		return getTextElement(driver, RegisterPageUI.REGISTER_SUCCESS_TEXT);
+		waitToElementDisplayed(driver, registerSuccessText);
+		return getTextElement(driver, registerSuccessText);
 
 	}
 
 	public HomePageObject clickToLogoutLink() {
-		waitToElementClickable(driver, RegisterPageUI.LOGOUT_LINK);
-		clickToElement(driver, RegisterPageUI.LOGOUT_LINK);
+		waitToElementClickable(driver, logoutLink);
+		clickToElement(driver, logoutLink);
 		return new HomePageObject(driver);
 	}
 
