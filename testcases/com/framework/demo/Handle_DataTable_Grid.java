@@ -83,7 +83,7 @@ public class Handle_DataTable_Grid extends AbstractPages{
 	driver.get("https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
 	
 		//InputToTextboxByColumnAndRowNumber("company", "2", "ABC");
-		InputToTextboxByColumnAndRow("company", "2", "ABC");
+		InputToTextboxByColumnAndRow("Company", "2", "ABC");
 		sleepInSecond(2);
 		
 		//InputToTextboxByColumnAndRowNumber("name", "1", "Apolo");
@@ -159,8 +159,8 @@ public class Handle_DataTable_Grid extends AbstractPages{
 	
 	public void clickToIconByRowNumber(String iconName , String rowNumber) {
 		locator = "//tbody//tr[%s]//button[@title='%s']";
-		waitToElementClickable(driver, rowNumber, iconName);
-		clickToElement(driver, rowNumber, iconName);
+		waitToElementClickable(driver, locator, rowNumber, iconName);
+		clickToElement(driver, locator, rowNumber, iconName);
 	}
 
 	@AfterClass
