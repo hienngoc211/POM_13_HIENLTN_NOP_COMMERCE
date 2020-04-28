@@ -1,7 +1,9 @@
 package commons;
 
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +30,7 @@ public abstract class AbstractPages {
 	private WebElement element;
 	private WebDriverWait waitExplicit;
 	public Select select;
+	private Date date;
 	
 	
 		
@@ -160,13 +163,43 @@ public abstract class AbstractPages {
 		return findElementByXpath(driver, locator).getAttribute(AttribuiteName);
 	}
 	
-	public boolean isElementDisplayed(WebDriver driver,String locator) {
-		return findElementByXpath(driver, locator).isDisplayed();
-	}
+	
+		public boolean isElementDisplayed(WebDriver driver, String locator) {
+			overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+			try {
+				// Happy path case nhảy vào đây 
+				element = findElementByXpath(driver, locator);
+				overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+				// implicitWait => findElement/ findElements
+				// findElement -> không tìm thấy -> đi tìm lại (lookup) lại sau mỗi nửa s cho đến hết thời gian 
+				// Hết thời gian 15s không tìm thấy thì đánh fail testcase và throw 1 exception
+				return element.isDisplayed();
+				
+			} catch(Exception ex) {
+				overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+				// throw exception -> Catch sẽ bắt được những exception này 
+				// không đánh fail testcase tại thời điểm đang chạy 
+				ex.printStackTrace();
+				return false;
+			}	
+		}
+	
 	
 	public boolean isElementDisplayed(WebDriver driver, String locator, String...values) {
-		locator = String.format(locator, (Object[])values);
-		return findElementByXpath(driver, locator, values).isDisplayed();
+		try {
+			// Happy path case nhảy vào đây 
+			element = findElementByXpath(driver, locator, values);
+			// implicitWait => findElement/ findElements
+			// findElement -> không tìm thấy -> đi tìm lại (lookup) lại sau mỗi nửa s cho đến hết thời gian 
+			// Hết thời gian 15s không tìm thấy thì đánh fail testcase và throw 1 exception
+			return element.isDisplayed();
+			
+		} catch(Exception ex) {
+			// throw exception -> Catch sẽ bắt được những exception này 
+			// không đánh fail testcase tại thời điểm đang chạy 
+			ex.printStackTrace();
+			return false;
+		}	
 	}
 	
 	public void hoverMouseToElement(WebDriver driver,String locator) {
@@ -216,6 +249,48 @@ public abstract class AbstractPages {
 		waitExplicit = new WebDriverWait(driver, GlobalConstants.LONG_TIMEOUT);
 		waitExplicit.until(ExpectedConditions.presenceOfElementLocated(byXpath));		
 	}
+	
+	public void overrideGlobalTimeout(WebDriver driver, long timeOut) {
+		driver.manage().timeouts().implicitlyWait(timeOut, TimeUnit.SECONDS);
+	}
+	
+	public void waitToElementInvisible(WebDriver driver, String locator) {
+		date = new Date();
+		By bylocator = By.xpath(locator);
+		waitExplicit = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		try {
+			System.out.println("Start time for wait invisible = " + date.toString());
+			waitExplicit.until(ExpectedConditions.invisibilityOfElementLocated(bylocator));
+		} catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		System.out.println("End time for wait invisible = " + new Date().toString());
+		overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+	}
+	public boolean isControlUndisplayed(WebDriver driver, String locator, String...value) {
+		date = new Date();
+		System.out.println("Start time = " + date.toString());
+		overrideGlobalTimeout(driver, GlobalConstants.SHORT_TIMEOUT);
+		List<WebElement>elements = driver.findElements(By.xpath(locator));
+		if (elements.size() == 0) {
+			System.out.println("Element not in DOM");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver,GlobalConstants.LONG_TIMEOUT);
+			return true;
+		} else if (elements.size() > 0 && !elements.get(0).isDisplayed()) {
+			System.out.println("Element in DOM but not visible/displayed");
+			System.out.println("End time = " + new Date().toString());
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return true;
+		} else {
+			System.out.println("Element in DOM and visible");
+			overrideGlobalTimeout(driver, GlobalConstants.LONG_TIMEOUT);
+			return false;
+		}
+		}
+	
+	
 	
 	// Open Footer Page
 	// 23 functions -> open 23 pages (Action chain)

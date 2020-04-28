@@ -18,7 +18,7 @@
   
     <classes>
     
-      <class name="com.nopcommerce.login.Login_08_RegisterAndLogin_Action_Chain"/>
+      <class name="com.nopcommerce.login.Login_10_RegisterAndLogin_Undisplayed"/>
       
     </classes>
 </test> 
