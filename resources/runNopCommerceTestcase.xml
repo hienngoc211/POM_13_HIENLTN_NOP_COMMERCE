@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="tests" thread-count="2">
 	
-
+<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	<listener class-name="commons.MethodListener" />
+</listeners>
 <!-- </test><test name="Run on CHROME ">
   <parameter name="browser" value="chrome"></parameter>
   
@@ -18,7 +22,7 @@
   
     <classes>
     
-      <class name="com.nopcommerce.login.Login_10_RegisterAndLogin_Undisplayed"/>
+      <class name="com.nopcommerce.login.Login_01b_RegisterAndLogin_StepbyStep2"/>
       
     </classes>
 </test> 
