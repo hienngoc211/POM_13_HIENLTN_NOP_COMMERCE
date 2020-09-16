@@ -1,11 +1,13 @@
 package demoexercise;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
@@ -13,20 +15,47 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
-		public class Topic12_JSExecuter {
+		public class Topic14_JSExecuter {
 			
 			WebDriver driver;
 			JavascriptExecutor jsExecutor;
+			By userID = By.xpath("//input[@name='uid']");
+			By loginBtn = By.xpath("//input[@name='btnLogin']");
+			By passwordLogin = By.xpath("//input[@name='password']");
+			By newCustomerBtn = By.xpath("//a[contains(text(),'New Customer')]");
+			String user = "mngr26593";
+			String pw = "ishal!12";
+			By customerName = By.name("name");
+			By genderRadioBtn = By.xpath("//input[@value='f']");
+			By dateOfBirth = By.xpath("//input[@id='dob']");
+			By address = By.name("addr");
+			By citytxb = By.xpath("//input[@name='city']");
+			By statetxb = By.xpath("//input[@name='state']");
+			By pintxb = By.xpath("//input[@name='pinno']");
+			By mobileNumbertxb = By.xpath("//input[@name='telephoneno']");
+			By emailtxb = By.xpath("//input[@name='emailid']");
+			By passwordtxb = By.xpath("//input[@name='password']");
+			By submitBtn = By.name("sub");
+			String name = "MichealObama";
+			String dob = "07/08/1998";
+			String add = "76 Hai Phong";
+			String city = "Da Nang";
+			String state = "Thanh Khe";
+			String pin = "123456";
+			String mobileNumber = "9876894523";
+			String email = "Corona" + randomNumber() + "@gmail.com";
+			String password = "123tyuhjuigh";
 			
-			
+
 			
 		@BeforeTest
  
-
 			public void beforeClass() {
 			
-				System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
-				driver = new FirefoxDriver();
+//				System.setProperty("webdriver.gecko.driver", "./BrowserDrivers/geckodriver");
+//				driver = new FirefoxDriver();
+				System.setProperty("webdriver.chrome.driver", "./BrowserDrivers/chromedriver");
+				driver = new ChromeDriver();
 				jsExecutor = (JavascriptExecutor) driver;
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				driver.manage().window().maximize();
@@ -35,7 +64,7 @@ import org.testng.annotations.Test;
 }
 		
 		
-		@Test
+//		@Test
 		
 		public void TC_01() throws InterruptedException {
 			
@@ -78,12 +107,50 @@ import org.testng.annotations.Test;
 		}
 		
 		@Test
-			public void TC_02() {
-				driver.get("http://demo.guru99.com/v4");
-				By userID = By.xpath("//input[@name='uid']");
-				
-				String password = "//input[@name='password']";
-				driver.findElement(By.xpath(password)).sendKeys("begAtAd");
+			public void TC_02() throws InterruptedException {
+				navigateToUrlByJS("http://demo.guru99.com/v4");
+				sendkeyToElementByJS(userID, user);
+				Thread.sleep(2000);
+				sendkeyToElementByJS(passwordLogin, pw);
+				Thread.sleep(2000);			
+				clickToElementByJS(loginBtn);
+				Thread.sleep(2000);	
+				clickToElementByJS(newCustomerBtn);
+				Thread.sleep(5000);			
+			//	sendkeyToElementByJS(customerName, name);
+				sendKeyToElement(customerName, name);
+				Thread.sleep(2000);			
+				clickToElementByJS(genderRadioBtn);
+				Thread.sleep(2000);			
+				removeAttributeInDOM(dateOfBirth,"type");
+				Thread.sleep(2000);	
+				//sendkeyToElementByJS(dateOfBirth,dob);
+				sendKeyToElement(dateOfBirth, dob);
+				Thread.sleep(2000);	
+				sendKeyToElement(address, add);
+			//	sendkeyToElementByJS(address, add);
+				Thread.sleep(5000);	
+			//	sendkeyToElementByJS(citytxb, city);
+				sendKeyToElement(citytxb, city);
+				Thread.sleep(2000);	
+			//	sendkeyToElementByJS(statetxb, state);
+				sendKeyToElement(statetxb, state);
+				Thread.sleep(2000);	
+			//	sendkeyToElementByJS(pintxb, pin);
+				sendKeyToElement(pintxb, pin);
+				Thread.sleep(2000);	
+			//	sendkeyToElementByJS(mobileNumbertxb,mobileNumber);
+				sendKeyToElement(mobileNumbertxb, mobileNumber);
+				Thread.sleep(2000);	
+			//	sendkeyToElementByJS(emailtxb, email);
+				sendKeyToElement(emailtxb, email);
+				Thread.sleep(2000);	
+			//	sendkeyToElementByJS(passwordtxb, password);
+				sendKeyToElement(passwordtxb, password);
+				Thread.sleep(2000);	
+				clickToElementByJS(submitBtn);	
+				Thread.sleep(5000);	
+		//	Assert.assertEquals(actual, expected);
 		}
 		
 		
@@ -91,7 +158,7 @@ import org.testng.annotations.Test;
 		
 		
 		public void afterClass() {
-			  driver.quit();
+//			  driver.quit();
 		  }
 		
 //		Browser
@@ -121,7 +188,7 @@ import org.testng.annotations.Test;
 
 		}
 
-//		Element
+//	Element
 		
 		public void clickToElementByJS(By by) {
 			WebElement element = driver.findElement(by);
@@ -132,14 +199,24 @@ import org.testng.annotations.Test;
 			jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
 		}
 
-		public void sendkeyToElementByJS(WebElement element, String value) {
+		public void sendkeyToElementByJS(By by, String value) {
+			WebElement element = driver.findElement(by);
 			jsExecutor.executeScript("arguments[0].setAttribute('value', '" + value + "')", element);
 		}
 
-		public void removeAttributeInDOM(WebElement element, String attributeRemove) {
+		public void removeAttributeInDOM(By by, String attributeRemove) {
+			WebElement element = driver.findElement(by);
 			jsExecutor.executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", element);
 		}
 		
+		public void sendKeyToElement(By by, String value) {
+			WebElement element = driver.findElement(by);
+			element.sendKeys(value );
+		}
+		public int randomNumber() {
+			Random rand = new Random();
+			return rand.nextInt(100000);
+		}
 		
 		
 		}
