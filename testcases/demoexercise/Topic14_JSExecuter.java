@@ -36,15 +36,15 @@ import org.testng.annotations.Test;
 			By emailtxb = By.xpath("//input[@name='emailid']");
 			By passwordtxb = By.xpath("//input[@name='password']");
 			By submitBtn = By.name("sub");
-			String name = "MichealObama";
-			String dob = "07/08/1998";
-			String add = "76 Hai Phong";
+			String name = "Barac";
+			String dob = "07/08/1988";
+			String add = "56 Phan Chau Trinh";
 			String city = "Da Nang";
-			String state = "Thanh Khe";
-			String pin = "123456";
-			String mobileNumber = "9876894523";
-			String email = "Corona" + randomNumber() + "@gmail.com";
-			String password = "123tyuhjuigh";
+			String state = "Hai Chau";
+			String pin = "456789";
+			String mobileNumber = "0976543123";
+			String email = "ahihi" + randomNumber() + "@gmail.com";
+			String password = "123456ghj";
 			
 
 			
@@ -106,7 +106,7 @@ import org.testng.annotations.Test;
 
 		}
 		
-		@Test
+//		@Test
 			public void TC_02() throws InterruptedException {
 				navigateToUrlByJS("http://demo.guru99.com/v4");
 				sendkeyToElementByJS(userID, user);
@@ -117,48 +117,75 @@ import org.testng.annotations.Test;
 				Thread.sleep(2000);	
 				clickToElementByJS(newCustomerBtn);
 				Thread.sleep(5000);			
-			//	sendkeyToElementByJS(customerName, name);
 				sendKeyToElement(customerName, name);
 				Thread.sleep(2000);			
 				clickToElementByJS(genderRadioBtn);
 				Thread.sleep(2000);			
 				removeAttributeInDOM(dateOfBirth,"type");
 				Thread.sleep(2000);	
-				//sendkeyToElementByJS(dateOfBirth,dob);
 				sendKeyToElement(dateOfBirth, dob);
 				Thread.sleep(2000);	
 				sendKeyToElement(address, add);
-			//	sendkeyToElementByJS(address, add);
 				Thread.sleep(5000);	
-			//	sendkeyToElementByJS(citytxb, city);
 				sendKeyToElement(citytxb, city);
 				Thread.sleep(2000);	
-			//	sendkeyToElementByJS(statetxb, state);
 				sendKeyToElement(statetxb, state);
 				Thread.sleep(2000);	
-			//	sendkeyToElementByJS(pintxb, pin);
 				sendKeyToElement(pintxb, pin);
 				Thread.sleep(2000);	
-			//	sendkeyToElementByJS(mobileNumbertxb,mobileNumber);
 				sendKeyToElement(mobileNumbertxb, mobileNumber);
 				Thread.sleep(2000);	
-			//	sendkeyToElementByJS(emailtxb, email);
 				sendKeyToElement(emailtxb, email);
 				Thread.sleep(2000);	
-			//	sendkeyToElementByJS(passwordtxb, password);
 				sendKeyToElement(passwordtxb, password);
 				Thread.sleep(2000);	
 				clickToElementByJS(submitBtn);	
 				Thread.sleep(5000);	
-		//	Assert.assertEquals(actual, expected);
+			Assert.assertEquals(driver.findElement(By.xpath("//td[contains(text(),'Customer Name')]/following-sibling::td")).getText(), name );
 		}
+	@Test 
+	
+	public void TC_03_Create_an_Account() {
+		navigateToUrlByJS("http://live.demoguru99.com/");
+		By myAccount = By.xpath("//div[@id='header-account']//child::a[@title='My Account']");
+		clickToElementByJS(myAccount);
+		By createAnAccountBtn = By.xpath("//a[@title='Create an Account']");
+		clickToElementByJS(createAnAccountBtn);
+		By firstNameTxb = By.xpath("//input[@id='firstname']");
+		By lastNameTxb = By.xpath("//input[@id='lastname']");
+		By emailTxb = By.xpath("//input[@id='email_address']");
+		By passwordTxb = By.xpath("//input[@id='password']");
+		By confirmpassTxb = By.xpath("//input[@id='confirmation']");
+		By registerBtn = By.xpath("//button[@title='Register']");
+		String firstName = "Automation";
+		String lastName = "QA";
+		String email = "automation" + randomNumber() + "@hotmail.com";
+		String password = "123asd456";
+		sendkeyToElementByJS(firstNameTxb, firstName);
+		sendkeyToElementByJS(lastNameTxb, lastName);
+		sendkeyToElementByJS(emailTxb, email);
+		sendkeyToElementByJS(passwordTxb, password);
+		sendkeyToElementByJS(confirmpassTxb, password);
+		clickToElementByJS(registerBtn);
+		String successMsg = driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText();
+		Assert.assertEquals(successMsg, "Thank you for registering with Main Website Store.");
+		System.out.println("Success Msg is: " + successMsg);
+		By logOutBtn = By.xpath("//a[@title='Log Out']");
+		clickToElementByJS(logOutBtn);
+		Assert.assertTrue(driver.findElement(By.xpath("//div[@class='page-title']")).isDisplayed());
+
+		
+		
+		
+		
+	}
 		
 		
 		@AfterTest
 		
 		
 		public void afterClass() {
-//			  driver.quit();
+		  driver.quit();
 		  }
 		
 //		Browser
