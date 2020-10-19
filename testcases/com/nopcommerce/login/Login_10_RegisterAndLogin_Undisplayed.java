@@ -44,7 +44,7 @@ public class Login_10_RegisterAndLogin_Undisplayed extends AbstractTest{
 	@BeforeTest
 	  public void beforeTest(String browserName ) {
 	
-		driver = getBrowserDriver (browserName);
+		driver = getBrowserDriver(browserName);
 		//driverManager = DriverManagerFactory.getBrowserManager(browserName);
 		//driver = driverManager.getDriverBrowser();
 		

@@ -49,8 +49,7 @@ public class Login_09_RegisterAndLogin_Dynamic_Locator extends AbstractTest{
 		
 		email =  "corona" + randomNumber() + "@gmail.com";
 		password = "123123";
-		
-		
+				
 	}
 
 	@Test
