@@ -19,7 +19,7 @@ public class AbstractTest {
 		log = LogFactory.getLog(getClass());
 	}
 	
-	public WebDriver getBrowserDriver(String browserName) {
+	protected WebDriver getBrowserDriver(String browserName) {
 	if (browserName.equalsIgnoreCase("chrome")) {
 		System.setProperty("webdriver.chrome.driver", "./BrowserDrivers/chromedriver");
 		driver = new ChromeDriver();
@@ -45,7 +45,7 @@ public class AbstractTest {
 		driver = new FirefoxDriver(options);
 	}
 
-	//driver = new FirefoxDriver();
+	driver = new FirefoxDriver();
 	driver.get(GlobalConstants.DEV_URL);
 	driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	

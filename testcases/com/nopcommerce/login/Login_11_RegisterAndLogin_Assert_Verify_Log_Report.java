@@ -1,7 +1,9 @@
 package com.nopcommerce.login;
 
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Optional;
@@ -25,16 +27,7 @@ public class Login_11_RegisterAndLogin_Assert_Verify_Log_Report extends Abstract
 	  public void beforeTest(@Optional("firefox") String browserName ) {
 	
 		//driver = getBrowserDriver (browserName);
-		//driverManager = DriverManagerFactory.getBrowserManager(browserName);
-		//driver = driverManager.getDriverBrowser();
-		
-		// Nhược: không theo nguyên tắc đóng gói OOP
-		// homePage = new HomePageObject(driver);
-		//homePage = PageGeneratorManager.getHomePage(driver);
-		
-		
-		
-		
+		//homePage = PageGeneratorManager.getHomePage(driver);	
 	}
 
 	@Test 
@@ -43,13 +36,13 @@ public class Login_11_RegisterAndLogin_Assert_Verify_Log_Report extends Abstract
 		// newCustomerPage = homePage.opennewCustomerPage(driver);
 		
 		 log.info("TC_01 - Step 02: Verify New Customer Page display");
-		 Assert.assertTrue(true);
+		 assertTrue(true);
 		 
 		 log.info("TC_01 - Step 03: Verify New Customer form not display");
-		 Assert.assertTrue(false);
+		 assertTrue(false);
 		 
 		 log.info("TC_04 - Step 04: Verify Home Page not display");
-		 Assert.assertTrue(true);
+		 assertTrue(true);
 	}
 	@Test 
 	public void TC_02_Verify() {
@@ -66,10 +59,6 @@ public class Login_11_RegisterAndLogin_Assert_Verify_Log_Report extends Abstract
 		 verifyTrue(true);
 	}
 	
-
-	
-
-
 	@AfterTest
 	public void afterTest() {
 		//driver.quit();
