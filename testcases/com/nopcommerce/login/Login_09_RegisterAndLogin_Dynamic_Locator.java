@@ -167,9 +167,4 @@ public class Login_09_RegisterAndLogin_Dynamic_Locator extends AbstractTest{
 		driver.quit();
 		  }
 
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
-
 }

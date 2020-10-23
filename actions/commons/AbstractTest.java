@@ -1,5 +1,6 @@
 package commons;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
@@ -113,5 +114,10 @@ public class AbstractTest {
 
 	protected boolean verifyEquals(Object actual, Object expected) {
 		return checkEquals(actual, expected);
+	}
+	
+	protected int randomNumber() {
+		Random rand = new Random();
+		return rand.nextInt(999999);
 	}
 }

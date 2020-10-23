@@ -117,9 +117,4 @@ public class Login_10_RegisterAndLogin_Undisplayed extends AbstractTest{
 		driver.quit();
 		  }
 
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
-
 }

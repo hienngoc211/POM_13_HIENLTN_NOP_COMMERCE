@@ -92,9 +92,5 @@ public class Login_06_RegisterAndLogin_Multi_Browser_Brallel extends AbstractTes
 		driver.quit();
 		  }
 
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
 
 }

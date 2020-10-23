@@ -1,53 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Nop Commerce" parallel="tests" thread-count="2">
+<!-- 			Global data for Suite -->
+			<parameter name="browser" value="firefox">
+		</parameter>
 	
-<listeners>
-	<listener class-name="org.uncommons.reportng.HTMLReporter" />
-	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
-	<listener class-name="commons.MethodListener" />
-<!-- 	<listener class-name="reportConfig.ExtendTestListenerV2" /> -->
-<!-- 	<listener class-name="reportConfig.ExtentTestListenerV3" />	 -->
-	<listener class-name="reportConfig.ExtentTestListenerV4" />	
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+		<listener class-name="commons.MethodListener" />
+		<!-- <listener class-name="reportConfig.ExtendTestListenerV2" /> -->
+		<!-- <listener class-name="reportConfig.ExtentTestListenerV3" /> -->
+		<listener class-name="reportConfig.ExtentTestListenerV4" />
 
-</listeners>
+	</listeners>
 
-<!-- </test><test name="Run on CHROME ">
-  <parameter name="browser" value="chrome"></parameter>
-  
-    <classes>
-  
-      <class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern"/>
-      
-    </classes>
- </test>  -->
-  
-<test name="Run on FIREFOX ">
-  	<parameter name ="browser" value="firefox"> </parameter>
-  	<parameter name ="ip" value ="192.168.1.1"> </parameter>
-  
-    <classes>
-    
-      <class name="com.nopcommerce.login.Login_06_RegisterAndLogin_Multi_Browser_Brallel"/>
-      
-    </classes>
-</test> 
-<!-- </test> <test name="Run on CHROME_HEADLESS "> 
-	<parameter name="browser" value="headless_chrome"></parameter> 
-	<classes>
+	<!-- </test><test name="Run on CHROME "> <parameter name="browser" value="chrome"></parameter> <classes> <class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern"/> </classes> </test> -->
 
- 		<class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern" /> 
+	<test name="Run on FIREFOX ">
+		<parameter name="browser" value="firefox">
+		</parameter>
+		<parameter name="ip" value="192.168.1.1">
+		</parameter>
 
-	</classes> 
- </test>   
- -->
-<!-- 	<test name="Run on FIREFOX_HEADLESS "> -->
-<!-- 		<parameter name="browser" value="headless_firefox"></parameter> -->
-<!-- 		<classes> -->
+		<classes>
+<!-- 		Run first: Precondition for class test -->
+			<class name="com.nopcommerce.common.Common_01_RegisterToSystem" />
+<!-- 			run testcase -->
+			<class name="com.nopcommerce.login.Login_09_RegisterAndLogin_Dynamic_Locator" />
 
-<!-- 			<class name="com.nopcommerce.login.Login_06_RegisterAndLogin_Multi_Browser_Brallel" /> -->
+		</classes>
+	</test>
+	<!-- </test> <test name="Run on CHROME_HEADLESS "> <parameter name="browser" value="headless_chrome"></parameter> <classes> <class name="com.nopcommerce.login.Login_07_RegisterAndLogin_Factory_Pattern" 
+		/> </classes> </test> -->
+	<!-- <test name="Run on FIREFOX_HEADLESS "> -->
+	<!-- <parameter name="browser" value="headless_firefox"></parameter> -->
+	<!-- <classes> -->
 
-<!-- 		</classes> -->
-<!-- 	</test>  -->
-  
+	<!-- <class name="com.nopcommerce.login.Login_06_RegisterAndLogin_Multi_Browser_Brallel" /> -->
+
+	<!-- </classes> -->
+	<!-- </test> -->
+
 
 </suite>
