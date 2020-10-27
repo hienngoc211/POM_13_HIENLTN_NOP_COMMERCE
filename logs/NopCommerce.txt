@@ -1,0 +1,10 @@
+2020-10-20 15:36:50,659 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 01: Open new customer page
+2020-10-20 15:36:50,663 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 02: Verify New Customer Page display
+2020-10-20 15:36:50,666 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 03: Verify New Customer form not display
+2020-10-20 15:36:50,676 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 01: Open new customer page
+2020-10-20 15:36:50,677 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 02: Verify New Customer Page display
+2020-10-20 15:36:50,677 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report -  -------------------------- PASSED -------------------------- 
+2020-10-20 15:36:50,677 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_01 - Step 03: Verify New Customer form not display
+2020-10-20 15:36:50,677 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report -  -------------------------- FAILED -------------------------- 
+2020-10-20 15:36:50,677 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report - TC_04 - Step 04: Verify Home Page not display
+2020-10-20 15:36:50,678 INFO  com.nopcommerce.login.Login_11_RegisterAndLogin_Assert_Verify_Log_Report -  -------------------------- PASSED -------------------------- 

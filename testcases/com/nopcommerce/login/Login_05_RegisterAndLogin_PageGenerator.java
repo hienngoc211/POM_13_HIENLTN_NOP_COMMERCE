@@ -135,9 +135,6 @@ public class Login_05_RegisterAndLogin_PageGenerator extends AbstractTest {
 		driver.quit();
 		  }
 	
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
+	
 
 }

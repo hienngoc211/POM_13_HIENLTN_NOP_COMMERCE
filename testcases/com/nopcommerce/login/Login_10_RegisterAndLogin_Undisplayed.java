@@ -44,7 +44,7 @@ public class Login_10_RegisterAndLogin_Undisplayed extends AbstractTest{
 	@BeforeTest
 	  public void beforeTest(String browserName ) {
 	
-		driver = getBrowserDriver (browserName);
+		driver = getBrowserDriver(browserName);
 		//driverManager = DriverManagerFactory.getBrowserManager(browserName);
 		//driver = driverManager.getDriverBrowser();
 		
@@ -116,10 +116,5 @@ public class Login_10_RegisterAndLogin_Undisplayed extends AbstractTest{
 	public void afterTest() {
 		driver.quit();
 		  }
-
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
 
 }

@@ -112,9 +112,5 @@ public class Login_08_RegisterAndLogin_Action_Chain extends AbstractTest{
 		driver.quit();
 		  }
 
-	private int randomNumber() {
-		Random rand = new Random();
-		return rand.nextInt(999999);
-	}
 
 }

@@ -6,7 +6,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="librabries/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="librabries/testng-6.9.10.jar"/>
 	<classpathentry kind="lib" path="librabries/guice-4.2.2-no_aop.jar"/>
 	<classpathentry kind="lib" path="librabries/log4j-api-2.8.2.jar"/>
@@ -18,6 +17,36 @@
 	<classpathentry kind="lib" path="librabries/commons-io-2.6.jar"/>
 	<classpathentry kind="lib" path="librabries/commons-collections-3.2.1.jar"/>
 	<classpathentry kind="lib" path="librabries/uploadAutoIT/log4j-1.2.17.jar"/>
+<<<<<<< HEAD
+=======
+	<classpathentry kind="lib" path="libExtentV4/bsh-2.0b4.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/bson-3.3.0.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/commons-codec-1.9.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/extentreports-4.0.9.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/freemarker-2.3.23.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/gson-2.8.5.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/httpclient-4.5.2.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/httpcore-4.4.4.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/httpmime-4.5.2.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/jcommander-1.48.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/mongodb-driver-3.3.0.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/mongodb-driver-core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="libExtentV4/testng-6.9.10.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/commons-codec-1.13.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/commons-compress-1.18.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/commons-io-2.7.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/commons-lang3-3.10.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/httpclient5-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/httpcore5-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/httpcore5-h2-5.0.1.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/jarchivelib-1.0.0.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/jsoup-1.13.1.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/slf4j-api-1.7.30.jar"/>
+	<classpathentry kind="lib" path="WebDriverManager4.1.0/webdrivermanager-4.1.0.jar"/>
+>>>>>>> branch 'master' of https://github.com/hienngoc211/POM_13_HIENLTN_NOP_COMMERCE.git
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/hienle/Documents/01-Software/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
