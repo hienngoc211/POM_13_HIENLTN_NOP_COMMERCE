@@ -25,7 +25,6 @@ import pageObjects.nopCommerce.RegisterPageObject;
 
 
 public class Login_12_Register_ShareClassState extends AbstractTest{		
-
 	private WebDriver driver;
 	private HomePageObject homePage;
 	private LoginPageObject loginPage;
@@ -40,10 +39,10 @@ public class Login_12_Register_ShareClassState extends AbstractTest{
 	@BeforeTest
 	  public void beforeTest(String browserName ) {
 	
-//		driver = getBrowserDriver (browserName);
-		driver = driverManager.getDriverBrowser();
-		driverManager = DriverManagerFactory.getBrowserManager(browserName);
-		
+		driver = getBrowserDriver (browserName);
+//		driver = driverManager.getDriverBrowser();
+//		driverManager = DriverManagerFactory.getBrowserManager(browserName);
+//		
 		// Nhược: không theo nguyên tắc đóng gói OOP
 		// homePage = new HomePageObject(driver);
 		homePage = PageGeneratorManager.getHomePage(driver);
@@ -71,9 +70,10 @@ public class Login_12_Register_ShareClassState extends AbstractTest{
 	public void TC_03_Payment() {
 		
 	}
-	@AfterTest
+	@AfterTest(alwaysRun = true)
 	public void afterTest() {
-		driver.quit();
+		closeBrowserAndDriver(driver);
+
 		  }
 
 }
